@@ -15,4 +15,4 @@ fintech_dbt/logs/
 .gcloud/
 
 # Data files
-*.csv
+*.csvlogs/
