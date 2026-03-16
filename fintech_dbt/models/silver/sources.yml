@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bronze
+    project: fintech-credit-ledger
+    dataset: bronze
+    tables:
+      - name: raw_transactions
+        description: "Raw messy transaction data loaded by ingest_data.py"

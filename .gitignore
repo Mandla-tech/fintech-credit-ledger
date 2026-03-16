@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# dbt
+fintech_dbt/target/
+fintech_dbt/dbt_packages/
+fintech_dbt/logs/
+
+# Credentials
+*.json
+.gcloud/
+
+# Data files
+*.csv

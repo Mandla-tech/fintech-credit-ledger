@@ -1,0 +1,67 @@
+models:
+  - name: gold_user_risk_scores
+    description: "One row per user. Aggregated risk metrics and risk tier for executive reporting."
+
+    config:
+      contract:
+        enforced: true
+
+    columns:
+      - name: user_id
+        description: "Unique customer identifier."
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - unique
+
+      - name: total_transactions
+        data_type: int64
+
+      - name: total_spend
+        data_type: float64
+
+      - name: avg_transaction_amount
+        data_type: float64
+
+      - name: max_transaction_amount
+        data_type: float64
+
+      - name: failed_transactions
+        data_type: int64
+
+      - name: pending_transactions
+        data_type: int64
+
+      - name: successful_transactions
+        data_type: int64
+
+      - name: failure_rate_pct
+        data_type: float64
+
+      - name: risk_score
+        data_type: float64
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+
+      - name: risk_tier
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['HIGH', 'MEDIUM', 'LOW']
+
+      - name: first_transaction_at
+        data_type: timestamp
+
+      - name: last_transaction_at
+        data_type: timestamp
+
+      - name: dbt_loaded_at
+        data_type: timestamp

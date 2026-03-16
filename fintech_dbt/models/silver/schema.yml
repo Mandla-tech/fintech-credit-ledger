@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: silver_transactions
+    description: "Cleaned and deduplicated transactions. Removes INVALID currencies, duplicates, and negative amounts."
+
+    config:
+      contract:
+        enforced: true
+
+    columns:
+      - name: txn_id
+        description: "Unique transaction identifier. Cannot be null."
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "The customer who made the transaction. Cannot be null."
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+
+      - name: amount
+        description: "Transaction amount. Nulls from source are coalesced to 0.00."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: currency
+        description: "ISO currency code. INVALID currencies removed in this layer."
+        data_type: string
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['USD', 'EUR', 'GBP']
+
+      - name: timestamp
+        description: "Standardized transaction timestamp."
+        data_type: timestamp          
+
+      - name: status
+        description: "Transaction status."
+        data_type: string
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['success', 'pending', 'failed']
+
+      - name: dbt_loaded_at
+        description: "Timestamp when dbt loaded this row."
+        data_type: timestamp
