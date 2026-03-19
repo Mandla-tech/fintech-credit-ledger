@@ -18,7 +18,7 @@ WITH user_metrics AS (
         COUNTIF(status = 'pending') AS pending_transactions,
         COUNTIF(status = 'success') AS successful_transactions,
 
-        --Failure rate as percentage
+        --Failure rate shown as a percentage
         ROUND(
             SAFE_DIVIDE(
                 COUNTIF(status = 'failed'),
@@ -26,7 +26,7 @@ WITH user_metrics AS (
             ) * 100, 2
         )                             AS failure_rate_pct,
 
-        --Time metrics
+        --Time metric
         MIN(timestamp)                 AS first_transaction_at,
         MAX(timestamp)                 AS last_transaction_at
 
