@@ -63,8 +63,8 @@ SELECT
     risk_score,
 
     CASE
-        WHEN risk_score >= 40 THEN 'HIGH'
-        WHEN risk_score >= 20 THEN 'MEDIUM'
+        WHEN risk_score >= 25 THEN 'HIGH'
+        WHEN risk_score >= 15 THEN 'MEDIUM'
         ELSE                        'LOW'
     END                                 AS risk_tier,
 
