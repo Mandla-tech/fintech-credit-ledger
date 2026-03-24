@@ -39,4 +39,21 @@ gold_user_risk_scores (Gold) —> risk scored, CFO and report ready
 |---|---|---|
 | Bronze | 1,010 | Raw, messy, untouched |
 | Silver | 881 | Cleaned, deduplicated |
-| Gold | 99 | One risk score per user |
+| Gold | 99 | One risk score per user |  
+
+## Dashboard Preview
+
+### Risk Tier Distribution
+![Risk Tier Distribution](images/risk_tier_chart.png)
+
+### Top 10 Highest Risk Users
+![Top 10 Risk Users](images/top10_highest_risk.png)
+
+### Dashboard 
+![Top 10 Risk Users](images/dashboard.png)
+
+## Business Impact
+- Automatically flags HIGH risk users before the CFO sees bad data
+- Eliminates 129 duplicate/invalid transactions from reporting (data cleaning is scalable)
+- 11 automated data quality tests run on every pipeline execution
+- Single Source of Truth for credit risk reporting
